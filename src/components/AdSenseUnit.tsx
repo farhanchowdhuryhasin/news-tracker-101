@@ -21,13 +21,16 @@ export default function AdSenseUnit({
   style = { display: 'block' },
 }: AdSenseUnitProps) {
   const { config } = useSiteConfig();
+  const insRef = React.useRef<HTMLModElement>(null);
 
   useEffect(() => {
     if (config.adsenseEnabled && (slot || config.adsenseCustomSnippet)) {
       try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        if (insRef.current && !insRef.current.getAttribute('data-adsbygoogle-status')) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
       } catch (e) {
-        console.error('AdSense error:', e);
+        // Suppress duplicate push errors safely
       }
     }
   }, [config.adsenseEnabled, slot, config.adsenseCustomSnippet]);
@@ -85,6 +88,7 @@ export default function AdSenseUnit({
         Advertisement
       </span>
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={style}
         data-ad-client={config.adsensePublisherId}
