@@ -229,9 +229,18 @@ export default function AdminPortal() {
   const handleSaveAdSense = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    let pubId = adsensePublisherId.trim();
+    const match = pubId.match(/(?:ca-)?pub-[0-9]+/i);
+    if (match) {
+      pubId = match[0];
+      if (!pubId.toLowerCase().startsWith('ca-')) {
+        pubId = 'ca-' + pubId;
+      }
+    }
+
     const success = await updateConfig({
       adsenseEnabled,
-      adsensePublisherId: adsensePublisherId.trim(),
+      adsensePublisherId: pubId,
       adsenseHomeTopSlot: adsenseHomeTopSlot.trim(),
       adsenseHomeSidebarSlot: adsenseHomeSidebarSlot.trim(),
       adsenseHomeInFeedSlot: adsenseHomeInFeedSlot.trim(),
@@ -240,7 +249,7 @@ export default function AdminPortal() {
     });
     setSaving(false);
     if (success) {
-      setStatus({ type: 'success', message: 'AdSense settings updated successfully!' });
+      setStatus({ type: 'success', message: 'AdSense settings updated successfully & verification script injected!' });
     } else {
       setStatus({ type: 'error', message: 'Failed to update AdSense settings' });
     }
@@ -741,7 +750,9 @@ export default function AdminPortal() {
                     <Shield className="w-4 h-4" />
                   </div>
                 </div>
-                <p className="text-[10px] text-neutral-400 px-1">Found in your AdSense account under Account {">"} Settings {">"} Account Information.</p>
+                <p className="text-[10px] text-neutral-400 px-1">
+                  Paste either your Publisher ID (e.g. <code className="font-mono">ca-pub-7732318796164413</code>) or the full Google AdSense <code className="font-mono">&lt;script&gt;</code> tag. We automatically extract and inject it for instant verification!
+                </p>
               </div>
 
               <div className="pt-4 border-t border-neutral-100 space-y-2">

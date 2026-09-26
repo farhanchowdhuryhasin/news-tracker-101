@@ -211,18 +211,45 @@ export function SiteConfigProvider({ children }: { children: React.ReactNode }) 
   }, [config.googleAnalyticsEnabled, config.googleAnalyticsId]);
 
   useEffect(() => {
-    if (config.adsenseEnabled && config.adsensePublisherId) {
+    if (config.adsenseEnabled && (config.adsensePublisherId || config.adsenseCustomSnippet)) {
       const scriptId = 'adsense-script';
-      if (!document.getElementById(scriptId)) {
-        const script = document.createElement('script');
-        script.id = scriptId;
-        script.async = true;
-        script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${config.adsensePublisherId}`;
-        script.crossOrigin = 'anonymous';
-        document.head.appendChild(script);
+      let pubId = (config.adsensePublisherId || '').trim();
+      
+      // Auto-extract ca-pub or pub ID if user pasted full script tag
+      const match = pubId.match(/(?:ca-)?pub-[0-9]+/i);
+      if (match) {
+        pubId = match[0];
+        if (!pubId.toLowerCase().startsWith('ca-')) {
+          pubId = 'ca-' + pubId;
+        }
+      } else if (config.adsenseCustomSnippet) {
+        const snippetMatch = config.adsenseCustomSnippet.match(/(?:ca-)?pub-[0-9]+/i);
+        if (snippetMatch) {
+          pubId = snippetMatch[0];
+          if (!pubId.toLowerCase().startsWith('ca-')) {
+            pubId = 'ca-' + pubId;
+          }
+        }
+      }
+
+      if (pubId) {
+        let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+        if (!script) {
+          script = document.createElement('script');
+          script.id = scriptId;
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          document.head.appendChild(script);
+        }
+        script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pubId}`;
+      }
+    } else {
+      const script = document.getElementById('adsense-script');
+      if (script) {
+        script.remove();
       }
     }
-  }, [config.adsenseEnabled, config.adsensePublisherId]);
+  }, [config.adsenseEnabled, config.adsensePublisherId, config.adsenseCustomSnippet]);
 
   // Google Tag Manager & Custom Scripts Injection
   useEffect(() => {
