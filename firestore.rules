@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'mdfarhanchowdhuryhasin@gmail.com' ||
+        request.auth.token.email_verified == true
+      );
+    }
+
+    // Test doc for initial connection validation
+    match /test/{docId} {
+      allow read: if true;
+    }
+
+    // News articles & blogs
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Site branding, legal pages & monetization config
+    match /config/{configId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Tracking deleted blog IDs
+    match /system/{systemId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Catch-all default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

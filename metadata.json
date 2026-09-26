@@ -1,0 +1,7 @@
+{
+  "name": "World News Tracker Online",
+  "description": "Real-time world news tracking and live headlines search engine at worldnewstracker.online.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

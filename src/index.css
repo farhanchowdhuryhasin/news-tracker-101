@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "react-quill-new/dist/quill.snow.css";
+
+/* Google Docs style clean reading typography for published blogs */
+.blog-content {
+  font-family: inherit;
+  color: #262626;
+  font-size: 1.125rem;
+  line-height: 1.85;
+  word-break: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.blog-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.blog-content .ql-align-center {
+  text-align: center;
+}
+.blog-content .ql-align-right {
+  text-align: right;
+}
+.blog-content .ql-align-justify {
+  text-align: justify;
+}
+.blog-content p {
+  margin-bottom: 1.5em;
+}
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #111827;
+  letter-spacing: -0.025em;
+}
+.blog-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 1.6em;
+  margin-bottom: 0.7em;
+  color: #1f2937;
+  letter-spacing: -0.02em;
+}
+.blog-content h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+  color: #374151;
+}
+.blog-content ul {
+  list-style-type: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.5em;
+}
+.blog-content ol {
+  list-style-type: decimal;
+  padding-left: 1.75rem;
+  margin-bottom: 1.5em;
+}
+.blog-content li {
+  margin-bottom: 0.5em;
+}
+.blog-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: #4b5563;
+  background: #f8fafc;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.blog-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Quill editor custom styling - ensure no options are hidden, clipped, or disabled */
+.quill-editor-container {
+  overflow: visible !important;
+}
+
+.quill-editor-container .ql-toolbar {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.quill-editor-container .ql-container {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+  min-height: 350px;
+  font-size: 1rem;
+}
+
+.quill-editor-container .ql-picker-options {
+  z-index: 50 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.quill-editor-container .ql-toolbar button {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+
+

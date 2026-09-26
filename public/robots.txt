@@ -1,0 +1,63 @@
+# worldnewstracker.online Robots.txt
+# Optimized for Search Engine Optimization (SEO) & Generative Engine Optimization (GEO)
+
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Disallow: /admin
+Disallow: /api/
+
+# Google Crawlers & Googlebot-News
+User-agent: Googlebot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Disallow: /admin
+
+User-agent: Googlebot-News
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Disallow: /admin
+
+User-agent: Mediapartners-Google
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Disallow: /admin
+
+# Generative AI & Answer Engine Crawlers (GEO & AEO optimization)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemaps & Machine-readable syndication
+Sitemap: https://www.worldnewstracker.online/sitemap.xml
+Sitemap: https://www.worldnewstracker.online/sitemap-news.xml
+Sitemap: https://www.worldnewstracker.online/rss.xml
+# LLMs citation guide: https://www.worldnewstracker.online/llms.txt

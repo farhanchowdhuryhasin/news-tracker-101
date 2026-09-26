@@ -1,0 +1,125 @@
+{
+  "entities": {
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "A published or draft news article or editorial blog post",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the blog post"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the article"
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly slug for the article"
+        },
+        "content": {
+          "type": "string",
+          "description": "Rich text HTML content of the article"
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "Short excerpt summary of the article"
+        },
+        "coverImage": {
+          "type": "string",
+          "description": "Cover image URL"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author name"
+        },
+        "readTime": {
+          "type": "string",
+          "description": "Estimated read time string"
+        },
+        "published": {
+          "type": "boolean",
+          "description": "Whether the article is publicly published"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp in ISO format"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp in ISO format"
+        }
+      },
+      "required": ["title", "slug", "content"]
+    },
+    "SiteConfig": {
+      "title": "SiteConfig",
+      "description": "Global website configuration, legal page content, branding, and monetization settings",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "siteTagline": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "redirectUrl": { "type": "string" },
+        "privacyContent": { "type": "string" },
+        "termsContent": { "type": "string" },
+        "disclaimerContent": { "type": "string" },
+        "aboutContent": { "type": "string" },
+        "contactContent": { "type": "string" },
+        "privacyPublished": { "type": "boolean" },
+        "termsPublished": { "type": "boolean" },
+        "disclaimerPublished": { "type": "boolean" },
+        "aboutPublished": { "type": "boolean" },
+        "contactPublished": { "type": "boolean" },
+        "footerDescription": { "type": "string" },
+        "footerEmail": { "type": "string" },
+        "googleAnalyticsEnabled": { "type": "boolean" },
+        "googleAnalyticsId": { "type": "string" },
+        "adsenseEnabled": { "type": "boolean" },
+        "adsensePublisherId": { "type": "string" },
+        "adsenseHomeTopSlot": { "type": "string" },
+        "adsenseHomeSidebarSlot": { "type": "string" },
+        "adsenseHomeInFeedSlot": { "type": "string" },
+        "adsenseHomeBottomSlot": { "type": "string" },
+        "googleSearchConsoleVerificationCode": { "type": "string", "description": "Google Search Console verification meta tag token or raw code" },
+        "googleSearchConsoleHtmlFile": { "type": "string", "description": "Google Search Console verification HTML filename (e.g., google123456.html)" },
+        "bingWebmasterVerificationCode": { "type": "string", "description": "Bing Webmaster verification meta code" },
+        "gtmEnabled": { "type": "boolean", "description": "Whether Google Tag Manager is enabled" },
+        "gtmContainerId": { "type": "string", "description": "GTM container ID (e.g. GTM-XXXXXXX)" },
+        "gtmCustomDataLayerName": { "type": "string", "description": "Custom dataLayer variable name" },
+        "gtmTrackEvents": { "type": "boolean", "description": "Track automatic web events to dataLayer" },
+        "customHeadScript": { "type": "string", "description": "Custom script injected into head" },
+        "customBodyScript": { "type": "string", "description": "Custom script or noscript injected into body" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "DeletedBlogRecord": {
+      "title": "DeletedBlogRecord",
+      "description": "Record of deleted blog IDs to prevent resurrection",
+      "type": "object",
+      "properties": {
+        "deletedIds": {
+          "type": "array",
+          "description": "Array of permanently deleted post IDs"
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/blogs/{blogId}": {
+      "schema": "BlogPost",
+      "description": "Collection of all news articles and blog posts"
+    },
+    "/config/global": {
+      "schema": "SiteConfig",
+      "description": "Global site configuration document"
+    },
+    "/system/deleted_blogs": {
+      "schema": "DeletedBlogRecord",
+      "description": "Record of deleted blog IDs"
+    }
+  }
+}

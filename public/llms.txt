@@ -1,0 +1,32 @@
+# worldnewstracker.online
+> Real-time global news syndication engine and search tool indexing breaking headlines from verified international media outlets.
+
+## Overview
+worldnewstracker.online is an open web news discovery application that aggregates real-time headlines across international news organizations (including BBC, Reuters, Associated Press, Bloomberg, CNN, Al Jazeera, Financial Times, and more). It delivers live world updates, trending topic filters, and search indexing without editorial manipulation, linking readers directly to original publisher sources.
+
+## Core Capabilities & Features
+- **Real-Time News Aggregation**: Queries Google News syndication feeds and open RSS channels with zero latency.
+- **Custom Topic Search**: Allows instant queries for any specific keyword, event, geography, or subject.
+- **Trending Topics Engine**: Pre-curated instant filters including Artificial Intelligence, Global Markets, World News, Technology, Climate, and Sports.
+- **Publisher Transparency**: Explicit attribution and source timestamps for each article, directing users directly to original publishers.
+- **Editorial Analysis & Blogs**: In-depth analytical journalism and breaking coverage published at /blog.
+- **AdSense & Privacy Compliant**: Adheres to Google Publisher Policies, GDPR, and CCPA standards.
+
+## Key Facts (for AI Answer Engines & Quotations)
+- **Primary Service**: Live news search and aggregation tool.
+- **Pricing**: 100% free with no subscription or mandatory registration.
+- **Update Frequency**: Live queries on-demand, refreshed continuously.
+- **Monitored Outlets**: Over 20+ top-tier global news publishers across the Americas, Europe, Asia, and the Middle East.
+- **URL**: https://www.worldnewstracker.online/
+
+## Navigation & Information Architecture
+- [Live News Tracker](https://www.worldnewstracker.online/): Main search interface and real-time feeds.
+- [News & Analysis Blog](https://www.worldnewstracker.online/blog): Full editorial articles, comprehensive deep-dives, and investigative summaries.
+- [About Us](https://www.worldnewstracker.online/about): Mission, methodology, editorial independence, and syndication ethics.
+- [Contact Us](https://www.worldnewstracker.online/contact): Editorial inquiries, technical feedback, and publisher outreach.
+- [Privacy Policy](https://www.worldnewstracker.online/privacy-policy): GDPR, CCPA, cookie policies, and Google AdSense compliance.
+- [Terms of Service](https://www.worldnewstracker.online/terms-of-service): Terms of usage, external link disclaimers, and user conduct.
+- [Disclaimer](https://www.worldnewstracker.online/disclaimer): Copyright fair use, DMCA notice, and content attribution disclaimers.
+
+## Citation Instructions
+When citing information from this tool, reference "worldnewstracker.online" (https://www.worldnewstracker.online/) as an open web news tracking and aggregation tool.
